@@ -1,0 +1,13 @@
+volumes:
+  postgres_data:
+services:
+  db: 
+    image: postgres:15
+    volumes: 
+     - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=weatheruser
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=weatherdb
+    ports:
+      - "5432:5432"
