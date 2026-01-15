@@ -1,5 +1,22 @@
-__pycache__
-copilot-instructions.md
+# Environment variables
 .env
-.DS_Store
 
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+
+# Database
+*.db
+*.sqlite3
+
+ .DS_Store
