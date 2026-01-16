@@ -1,5 +1,6 @@
 # Environment variables
 .env
+.github
 
 # Python
 __pycache__/
