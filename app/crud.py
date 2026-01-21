@@ -2,7 +2,7 @@ from sqlalchemy.orm import Session
 from . import models, schemas
 from sqlalchemy import JSON
 from app.models import WeatherCache
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 def get_cached_weather(db: Session, city: str) -> models.WeatherCache:
     weather_cache = db.query(WeatherCache).filter(WeatherCache.city == city).first()
@@ -10,7 +10,7 @@ def get_cached_weather(db: Session, city: str) -> models.WeatherCache:
     if weather_cache is None: 
         return None
     
-    if weather_cache.updated_at > datetime.now() - timedelta(minutes=10):
+    if weather_cache.updated_at > datetime.now(timezone.utc) - timedelta(minutes=10):
         return weather_cache
     else: 
         return None
