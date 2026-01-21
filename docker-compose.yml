@@ -11,9 +11,7 @@ services:
       - "5432:5432"
 
   api:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: justjjosh/weatherapi:latest
     ports:
       - "8000:8000"
     environment:
