@@ -1,5 +1,3 @@
-volumes:
-  postgres_data:
 services:
   db: 
     image: postgres:15
@@ -11,3 +9,17 @@ services:
       - POSTGRES_DB=weatherdb
     ports:
       - "5432:5432"
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://weatheruser:${POSTGRES_PASSWORD}@db:5432/weatherdb
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:
